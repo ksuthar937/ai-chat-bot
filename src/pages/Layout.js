@@ -7,12 +7,12 @@ import { Box } from "@mui/material";
 
 const Layout = () => {
   return (
-    <Box sx={{ display: { xs: "flex" } }}>
+    <Box sx={{ display: { xs: "flex" }, height: "100vh" }}>
       <Box
         sx={{
           display: { xs: "none", sm: "block" },
           height: "100vh",
-          width: "240px",
+          width: "280px",
           background: "white",
         }}
       >
@@ -20,23 +20,23 @@ const Layout = () => {
       </Box>
       <Box
         sx={{
-          width: "auto",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
         }}
       >
         <header>
           <Navbar />
         </header>
-        <main>
-          <Outlet />
-        </main>
-        <footer
-          style={{
-            position: "fixed",
-            bottom: 0,
-          }}
-        >
-          <FormInput />
-        </footer>
+        <Box>
+          <main>
+            <Outlet />
+          </main>
+          <footer>
+            <FormInput />
+          </footer>
+        </Box>
       </Box>
     </Box>
   );

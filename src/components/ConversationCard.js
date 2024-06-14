@@ -1,28 +1,18 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 import UserIamage from "../assets/user.jpg";
-// import BotAIIamage from "../assets/BotAI_Logo.png";
+import BotAIIamage from "../assets/BotAI_Logo.png";
 
-const ConversationCard = ({ content, time }) => {
+const ConversationCard = ({ type, content, time }) => {
   return (
-    <Card
-      sx={{
-        display: "flex",
-        marginLeft: 2,
-        marginRight: { sm: 4, xs: 2 },
-        my: 3,
-        background: "rgba(215, 199, 244, 0.13)",
-        borderRadius: 4,
-      }}
-    >
+    <>
       <CardMedia
         component="img"
         sx={{ width: 120, height: 120, borderRadius: 15, p: 2 }}
-        image={UserIamage}
+        image={type === "question" ? UserIamage : BotAIIamage}
         alt="user"
       />
 
@@ -42,7 +32,7 @@ const ConversationCard = ({ content, time }) => {
             fontFamily: "ubuntu",
           }}
         >
-          You
+          {type === "question" ? "You" : "Soul AI"}
         </Typography>
         <Typography
           sx={{
@@ -66,7 +56,7 @@ const ConversationCard = ({ content, time }) => {
           {time}
         </Typography>
       </CardContent>
-    </Card>
+    </>
   );
 };
 

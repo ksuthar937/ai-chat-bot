@@ -7,10 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Tabs from "./Tabs";
 import { Drawer } from "@mui/material";
+import { useNavigate } from "react-router";
 
 const drawerWidth = 240;
 
 const Navbar = (props) => {
+  const navigate = useNavigate();
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -57,7 +60,11 @@ const Navbar = (props) => {
               fontWeight: 700,
               fontSize: "24px",
               fontFamily: "Ubuntu",
+              ":hover": {
+                cursor: "pointer",
+              },
             }}
+            onClick={() => navigate("/")}
           >
             Bot AI
           </Typography>

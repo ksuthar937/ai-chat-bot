@@ -1,59 +1,25 @@
 import React from "react";
-import SuggestionCard from "../components/SuggestionCard";
-import { Box, Typography } from "@mui/material";
-
-import ChatAIBotLogo from "../assets/BotAI_Logo.png";
-
-const intialSuggestions = [
-  "Hi, what is the weather",
-  "Hi, what is my location?",
-  "Hi, how are you",
-  "Hi, what is the temperature",
-];
+import InitialData from "../components/InitialData";
+import { useSelector } from "react-redux";
+import ConversationCard from "../components/ConversationCard";
 
 const Home = () => {
-  return (
-    <Box sx={{}}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          marginBottom: 8,
-        }}
-      >
-        <Typography
-          sx={{ fontFamily: "ubuntu", fontWeight: 500, fontSize: "28px" }}
-        >
-          How Can I Help You Today?
-        </Typography>
+  const convessations = useSelector((state) => state.currentConversation);
 
-        <img
-          style={{
-            borderRadius: "50px",
-            boxShadow: "-4px 4px 10px 0px rgba(0, 0, 0, 0.15)",
-          }}
-          src={ChatAIBotLogo}
-          alt="chat ai bot logo"
-          width={60}
-        />
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { sm: "row", xs: "column" },
-          flexWrap: { sm: "wrap", xs: "nowrap" },
-          alignItems: "stretch",
-          justifyContent: "center",
-          marginBottom: { sm: 6, xs: 2 },
-          gap: { sm: 2, xs: 1 },
-        }}
-      >
-        {intialSuggestions.map((item) => (
-          <SuggestionCard suggestion={item} />
-        ))}
-      </Box>
-    </Box>
+  return (
+    <>
+      {convessations.length > 0 ? (
+        convessations.map((item) => (
+          <ConversationCard
+            key={item.id}
+            content={item.question}
+            time={item.time}
+          />
+        ))
+      ) : (
+        <InitialData />
+      )}
+    </>
   );
 };
 

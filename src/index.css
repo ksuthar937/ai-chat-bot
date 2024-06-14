@@ -58,3 +58,13 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+@media screen and (min-width: 600px) {
+  body {
+    background: linear-gradient(
+      180deg,
+      rgba(215, 199, 244, 0.2) 0%,
+      rgba(151, 133, 186, 0.2) 100%
+    );
+  }
+}

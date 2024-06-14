@@ -1,7 +1,18 @@
 import { Box, Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { askQuestion } from "../redux/chatSlice";
 
 const FormInput = () => {
+  const [userInput, setUserInput] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    dispatch(askQuestion(userInput));
+    setUserInput("");
+  };
+
   return (
     <Box
       sx={{
@@ -16,8 +27,13 @@ const FormInput = () => {
         fullWidth
         sx={{
           background: "var(--color-white)",
+
+          borderRadius: "5px",
         }}
         size="small"
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
+        placeholder="Ask something to Bot AI"
       />
       <Button
         sx={{
@@ -30,6 +46,8 @@ const FormInput = () => {
         }}
         variant="contained"
         size="medium"
+        onClick={handleSubmit}
+        disabled={userInput === ""}
       >
         Ask
       </Button>

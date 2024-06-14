@@ -1,7 +1,12 @@
+import { Box, Typography } from "@mui/material";
 import React from "react";
 
 const History = () => {
-  return <div>History</div>;
+  return (
+    <Box>
+      <Typography>Conversation History</Typography>
+    </Box>
+  );
 };
 
 export default History;

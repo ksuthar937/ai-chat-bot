@@ -1,16 +1,47 @@
 import { Box, Button, TextField } from "@mui/material";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { askQuestion } from "../redux/chatSlice";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  aiBotResponse,
+  askQuestion,
+  saveCurrentConversation,
+  setResponses,
+} from "../redux/chatSlice";
+
+import responseData from "../sampleData.json";
 
 const FormInput = () => {
   const [userInput, setUserInput] = useState("");
 
+  const responses = useSelector((state) => state.customizedResponses);
+
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    dispatch(askQuestion(userInput));
-    setUserInput("");
+    if (userInput.trim()) {
+      const response = responses.find(
+        (res) => res.question.toLowerCase() === userInput.toLowerCase()
+      );
+      dispatch(askQuestion(userInput));
+      setUserInput("");
+
+      setTimeout(() => {
+        dispatch(
+          aiBotResponse(
+            response ? response.response : "I don't undestood that question!"
+          )
+        );
+      }, [2000]);
+    }
+  };
+
+  useEffect(() => {
+    dispatch(setResponses(responseData));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleSaveChat = () => {
+    dispatch(saveCurrentConversation());
   };
 
   return (
@@ -62,6 +93,7 @@ const FormInput = () => {
         }}
         variant="contained"
         size="medium"
+        onClick={handleSaveChat}
       >
         Save
       </Button>

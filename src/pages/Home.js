@@ -20,9 +20,9 @@ const Home = () => {
               background: "rgba(215, 199, 244, 0.13)",
               borderRadius: 4,
             }}
+            key={item.id}
           >
             <ConversationCard
-              key={item.id}
               content={item.question}
               time={item.time}
               type={item.type}

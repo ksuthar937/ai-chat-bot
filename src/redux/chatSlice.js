@@ -50,12 +50,16 @@ const initialState = {
       ],
     },
   ],
+  customizedResponses: [],
 };
 
 const chatSlice = createSlice({
   name: "chats",
   initialState,
   reducers: {
+    setResponses(state, action) {
+      state.customizedResponses = action.payload;
+    },
     askQuestion(state, action) {
       state.currentConversation.push({
         type: "question",
@@ -64,9 +68,31 @@ const chatSlice = createSlice({
         time: new Date().toLocaleTimeString(),
       });
     },
+    aiBotResponse(state, action) {
+      state.currentConversation.push({
+        type: "answer",
+        id: state.currentConversation.length + 1,
+        question: action.payload,
+        time: new Date().toLocaleTimeString(),
+      });
+    },
+    saveCurrentConversation(state, action) {
+      state.pastConversations = [
+        ...state.pastConversations,
+        {
+          data: state.currentConversation,
+        },
+      ];
+      state.currentConversation = [];
+    },
   },
 });
 
-export const { askQuestion } = chatSlice.actions;
+export const {
+  askQuestion,
+  setResponses,
+  aiBotResponse,
+  saveCurrentConversation,
+} = chatSlice.actions;
 
 export default chatSlice.reducer;

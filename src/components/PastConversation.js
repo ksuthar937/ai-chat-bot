@@ -53,7 +53,7 @@ const PastConversation = () => {
                   fontWeight: 700,
                 }}
               >
-                Feedback:
+                Feedback:{" "}
               </span>
               {item.feedback}
             </Typography>
@@ -78,7 +78,7 @@ const PastConversation = () => {
               </Typography>
               <StarRatings
                 rating={item.rating}
-                starEmptyColor="var(--color-white)"
+                starEmptyColor="var(--color-primary2)"
                 starRatedColor="var(--color-black)"
                 numberOfStars={5}
                 starDimension="15px"

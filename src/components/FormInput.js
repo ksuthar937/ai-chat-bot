@@ -16,6 +16,8 @@ const FormInput = () => {
   const [userInput, setUserInput] = useState("");
   const responses = useSelector((state) => state.customizedResponses);
   const conversations = useSelector((state) => state.currentConversation);
+  const isTyping = useSelector((state) => state.isTyping);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -110,7 +112,7 @@ const FormInput = () => {
         variant="contained"
         size="medium"
         onClick={handleModalOpen}
-        disabled={!conversations.length}
+        disabled={!conversations.length || isTyping}
       >
         Save
       </Button>

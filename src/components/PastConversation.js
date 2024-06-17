@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import ConversationCard from "./ConversationCard";
-import { Card } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
+import StarRatings from "react-star-ratings";
 
 const PastConversation = () => {
   const pastConversations = useSelector((state) => state.pastConversations);
@@ -38,6 +39,54 @@ const PastConversation = () => {
               />
             </Card>
           ))}
+
+          {item.feedback && (
+            <Typography
+              sx={{
+                fontSize: "16px",
+                textAlign: "left",
+                p: 2,
+              }}
+            >
+              <span
+                style={{
+                  fontWeight: 700,
+                }}
+              >
+                Feedback:
+              </span>
+              {item.feedback}
+            </Typography>
+          )}
+          {item.rating && (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  textAlign: "left",
+                  p: 2,
+                  fontWeight: 700,
+                }}
+              >
+                Rating:
+              </Typography>
+              <StarRatings
+                rating={item.rating}
+                starEmptyColor="var(--color-white)"
+                starRatedColor="var(--color-black)"
+                numberOfStars={5}
+                starDimension="15px"
+                starSpacing="4px"
+                name="rating"
+              />
+            </Box>
+          )}
         </Card>
       ))}
     </div>

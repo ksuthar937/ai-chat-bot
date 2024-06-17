@@ -8,12 +8,21 @@ import PencilLogo from "../assets/pencil.svg";
 import AiBotLogo from "../assets/BotAI_Logo.png";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { newChat } from "../redux/chatSlice";
 
 const Tabs = () => {
   const navigate = useNavigate();
 
   const handlePastConvesations = () => {
     navigate("history");
+  };
+
+  const dispatch = useDispatch();
+
+  const handleNewChat = () => {
+    dispatch(newChat());
+    navigate("/");
   };
 
   return (
@@ -56,6 +65,7 @@ const Tabs = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: -2 }}
+            onClick={handleNewChat}
           >
             <img src={PencilLogo} alt="pencil" width={24} />
           </IconButton>

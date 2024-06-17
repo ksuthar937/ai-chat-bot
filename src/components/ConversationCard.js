@@ -6,6 +6,11 @@ import Typography from "@mui/material/Typography";
 import UserIamage from "../assets/user.jpg";
 import BotAIIamage from "../assets/BotAI_Logo.png";
 
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+
+import { Box, IconButton } from "@mui/material";
+
 const ConversationCard = ({ type, content, time }) => {
   return (
     <>
@@ -44,17 +49,51 @@ const ConversationCard = ({ type, content, time }) => {
         >
           {content}
         </Typography>
-        <Typography
+        <Box
           sx={{
-            fontSize: "12px",
-            fontWeight: 400,
-            textAlign: "left",
-            opacity: 0.6,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
           }}
-          component="div"
         >
-          {time}
-        </Typography>
+          <Typography
+            sx={{
+              fontSize: "12px",
+              fontWeight: 400,
+              textAlign: "left",
+              opacity: 0.6,
+              mr: 1,
+            }}
+            component="div"
+          >
+            {time}
+          </Typography>
+
+          {/* Like-Dislike buttons for feedbacks  */}
+
+          {type === "answer" && (
+            <>
+              <IconButton size="small" color="inherit" aria-label="menu">
+                <ThumbUpIcon
+                  sx={{
+                    height: "16px",
+                    width: "16px",
+                    color: "var(--color-primary2)",
+                  }}
+                />
+              </IconButton>
+              <IconButton size="small" color="inherit" aria-label="menu">
+                <ThumbDownIcon
+                  sx={{
+                    height: "16px",
+                    width: "16px",
+                    color: "var(--color-primary2)",
+                  }}
+                />
+              </IconButton>
+            </>
+          )}
+        </Box>
       </CardContent>
     </>
   );

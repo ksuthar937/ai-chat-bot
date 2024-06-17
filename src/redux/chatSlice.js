@@ -31,6 +31,8 @@ const initialState = {
           time: new Date().toLocaleTimeString(),
         },
       ],
+      feedback: "Excellent! Thank you",
+      rating: 4,
     },
     {
       data: [
@@ -48,9 +50,12 @@ const initialState = {
           time: new Date().toLocaleTimeString(),
         },
       ],
+      feedback: "Bad!",
+      rating: 1,
     },
   ],
   customizedResponses: [],
+  isTyping: false,
 };
 
 const chatSlice = createSlice({
@@ -61,6 +66,7 @@ const chatSlice = createSlice({
       state.customizedResponses = action.payload;
     },
     askQuestion(state, action) {
+      state.isTyping = true;
       state.currentConversation.push({
         type: "question",
         id: state.currentConversation.length + 1,
@@ -75,14 +81,20 @@ const chatSlice = createSlice({
         question: action.payload,
         time: new Date().toLocaleTimeString(),
       });
+      state.isTyping = false;
     },
     saveCurrentConversation(state, action) {
       state.pastConversations = [
         ...state.pastConversations,
         {
           data: state.currentConversation,
+          feedback: action.payload.userFeedback,
+          rating: action.payload.userRating,
         },
       ];
+      state.currentConversation = [];
+    },
+    newChat(state, action) {
       state.currentConversation = [];
     },
   },
@@ -93,6 +105,7 @@ export const {
   setResponses,
   aiBotResponse,
   saveCurrentConversation,
+  newChat,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

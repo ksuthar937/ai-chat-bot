@@ -45,8 +45,8 @@ const Layout = () => {
           sx={{
             flex: 1,
             overflowY: "auto",
-            paddingTop: "60px",
-            paddingBottom: "60px",
+            paddingTop: "100px",
+            paddingBottom: "100px",
             marginLeft: { xs: 0, sm: "280px" },
           }}
         >

@@ -9,13 +9,16 @@ import {
 } from "../redux/chatSlice";
 
 import responseData from "../sampleData.json";
+import FeedbackModal from "./FeedbackModal";
+import { useNavigate } from "react-router";
 
 const FormInput = () => {
   const [userInput, setUserInput] = useState("");
-
   const responses = useSelector((state) => state.customizedResponses);
-
+  const conversations = useSelector((state) => state.currentConversation);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     if (userInput.trim()) {
@@ -24,7 +27,7 @@ const FormInput = () => {
       );
       dispatch(askQuestion(userInput));
       setUserInput("");
-
+      navigate("/");
       setTimeout(() => {
         dispatch(
           aiBotResponse(
@@ -40,8 +43,20 @@ const FormInput = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  //Feedback
+
+  const [userFeedback, setUserFeedback] = React.useState("");
+  const [userRating, setUserRating] = React.useState(1);
+
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const handleModalOpen = () => setModalOpen(true);
+  const handleModalClose = () => setModalOpen(false);
+
   const handleSaveChat = () => {
-    dispatch(saveCurrentConversation());
+    dispatch(saveCurrentConversation({ userFeedback, userRating }));
+    setModalOpen(false);
+    setUserFeedback("");
+    setUserRating(1);
   };
 
   return (
@@ -58,7 +73,6 @@ const FormInput = () => {
         fullWidth
         sx={{
           background: "var(--color-white)",
-
           borderRadius: "5px",
         }}
         size="small"
@@ -74,6 +88,7 @@ const FormInput = () => {
           ":hover": {
             background: "var(--color-primary2)",
           },
+          textTransform: "capitalize",
         }}
         variant="contained"
         size="medium"
@@ -90,13 +105,24 @@ const FormInput = () => {
           ":hover": {
             background: "var(--color-primary2)",
           },
+          textTransform: "capitalize",
         }}
         variant="contained"
         size="medium"
-        onClick={handleSaveChat}
+        onClick={handleModalOpen}
+        disabled={!conversations.length}
       >
         Save
       </Button>
+      <FeedbackModal
+        open={modalOpen}
+        handleClose={handleModalClose}
+        handleSubmit={handleSaveChat}
+        handleFeedback={setUserFeedback}
+        value={userFeedback}
+        rating={userRating}
+        handleRating={setUserRating}
+      />
     </Box>
   );
 };

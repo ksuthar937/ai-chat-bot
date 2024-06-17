@@ -278,5 +278,25 @@
     "id": 55,
     "question": "Who are you?",
     "response": "I am AI Chat Bot"
+  },
+  {
+    "id": 56,
+    "question": "Hi, what is the weather",
+    "response": "Its mostly cloudy today at your location."
+  },
+  {
+    "id": 57,
+    "question": "Hi, what is my location?",
+    "response": "Pune, Maharashtra, India"
+  },
+  {
+    "id": 58,
+    "question": "Hi, how are you",
+    "response": "Hey! I am doing great."
+  },
+  {
+    "id": 59,
+    "question": "Hi, what is the temperature",
+    "response": "It's 28 Degree Celsius."
   }
 ]

@@ -4,8 +4,11 @@ import { useSelector } from "react-redux";
 import ConversationCard from "../components/ConversationCard";
 import { Card } from "@mui/material";
 
+import { Comment } from "react-loader-spinner";
+
 const Home = () => {
   const convessations = useSelector((state) => state.currentConversation);
+  const isTyping = useSelector((state) => state.isTyping);
 
   return (
     <>
@@ -31,6 +34,18 @@ const Home = () => {
         ))
       ) : (
         <InitialData />
+      )}
+      {isTyping && (
+        <Comment
+          visible={true}
+          height="40"
+          width="80"
+          ariaLabel="comment-loading"
+          wrapperStyle={{}}
+          wrapperClass="comment-wrapper"
+          color="#ffffff"
+          backgroundColor="#9785ba"
+        />
       )}
     </>
   );

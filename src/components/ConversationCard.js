@@ -10,8 +10,20 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 import { Box, IconButton } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { messageDisLike, messageLike } from "../redux/chatSlice";
 
-const ConversationCard = ({ type, content, time }) => {
+const ConversationCard = ({ type, content, time, id, reaction, readOnly }) => {
+  const dispatch = useDispatch();
+
+  const handleLike = () => {
+    dispatch(messageLike(id));
+  };
+
+  const handleDisLike = () => {
+    dispatch(messageDisLike(id));
+  };
+
   return (
     <>
       <CardMedia
@@ -71,9 +83,15 @@ const ConversationCard = ({ type, content, time }) => {
 
           {/* Like-Dislike buttons for feedbacks  */}
 
-          {type === "answer" && (
+          {type === "answer" && reaction === "" && (
             <>
-              <IconButton size="small" color="inherit" aria-label="menu">
+              <IconButton
+                onClick={handleLike}
+                size="small"
+                color="inherit"
+                aria-label="menu"
+                disabled={readOnly}
+              >
                 <ThumbUpIcon
                   sx={{
                     height: "16px",
@@ -82,12 +100,62 @@ const ConversationCard = ({ type, content, time }) => {
                   }}
                 />
               </IconButton>
-              <IconButton size="small" color="inherit" aria-label="menu">
+              <IconButton
+                onClick={handleDisLike}
+                size="small"
+                color="inherit"
+                aria-label="menu"
+                disabled={readOnly}
+              >
                 <ThumbDownIcon
                   sx={{
                     height: "16px",
                     width: "16px",
                     color: "var(--color-primary2)",
+                  }}
+                />
+              </IconButton>
+            </>
+          )}
+
+          {/* Like reaction  */}
+
+          {type === "answer" && reaction === "like" && (
+            <>
+              <IconButton
+                onClick={handleLike}
+                size="small"
+                color="inherit"
+                aria-label="menu"
+                disabled={readOnly}
+              >
+                <ThumbUpIcon
+                  sx={{
+                    height: "16px",
+                    width: "16px",
+                    color: "var(--color-black)",
+                  }}
+                />
+              </IconButton>
+            </>
+          )}
+
+          {/* DisLike reaction  */}
+
+          {type === "answer" && reaction === "dislike" && (
+            <>
+              <IconButton
+                onClick={handleLike}
+                size="small"
+                color="inherit"
+                aria-label="menu"
+                disabled={readOnly}
+              >
+                <ThumbDownIcon
+                  sx={{
+                    height: "16px",
+                    width: "16px",
+                    color: "var(--color-black)",
                   }}
                 />
               </IconButton>

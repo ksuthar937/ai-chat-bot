@@ -29,6 +29,8 @@ const Home = () => {
               content={item.question}
               time={item.time}
               type={item.type}
+              id={item.id}
+              reaction={item.reaction}
             />
           </Card>
         ))

@@ -30,12 +30,14 @@ const PastConversation = () => {
                 background: "none",
                 boxShadow: "none",
               }}
+              key={conversation.id}
             >
               <ConversationCard
-                key={conversation.id}
                 content={conversation.question}
                 time={conversation.time}
                 type={conversation.type}
+                reaction={conversation.reaction}
+                readOnly
               />
             </Card>
           ))}

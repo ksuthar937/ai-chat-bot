@@ -17,6 +17,7 @@ const initialState = {
           id: 11,
           question: "I am Good.",
           time: new Date().toLocaleTimeString(),
+          reaction: "like",
         },
         {
           type: "question",
@@ -29,6 +30,7 @@ const initialState = {
           id: 19,
           question: "Just listning song",
           time: new Date().toLocaleTimeString(),
+          reaction: "like",
         },
       ],
       feedback: "Excellent! Thank you",
@@ -48,6 +50,7 @@ const initialState = {
           id: 11,
           question: "As a AI language model. I can not helop you out.",
           time: new Date().toLocaleTimeString(),
+          reaction: "dislike",
         },
       ],
       feedback: "Bad!",
@@ -80,6 +83,7 @@ const chatSlice = createSlice({
         id: state.currentConversation.length + 1,
         question: action.payload,
         time: new Date().toLocaleTimeString(),
+        reaction: "",
       });
       state.isTyping = false;
     },
@@ -97,6 +101,18 @@ const chatSlice = createSlice({
     newChat(state, action) {
       state.currentConversation = [];
     },
+    messageLike(state, action) {
+      state.currentConversation[action.payload - 1] = {
+        ...state.currentConversation[action.payload - 1],
+        reaction: "like",
+      };
+    },
+    messageDisLike(state, action) {
+      state.currentConversation[action.payload - 1] = {
+        ...state.currentConversation[action.payload - 1],
+        reaction: "dislike",
+      };
+    },
   },
 });
 
@@ -106,6 +122,8 @@ export const {
   aiBotResponse,
   saveCurrentConversation,
   newChat,
+  messageLike,
+  messageDisLike,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+#  AI Chat Application with User Feedback
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This repository contains a ReactJS web application developed as part of an assessment. 
+The goal of this application is to allow users to chat with an AI model and provide reaction at each stage of the conversation and feedback at the end of the conversation.
+The application focuses on delivering a seamless user experience with a well-designed, easy-to-navigate UI.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### AI Chat: 
 
-### `npm start`
+Users can chat with an AI model. Responses are mocked using a custom JSON file.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Feedback Mechanisms: 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Thumbs up/down for each AI response.
+Users can provide feedback on AI responses and at the end of conversations: 
+Rating out of 5 at the end of the conversation (likert scale, stars, etc.).
+Subjective feedback at the end of the conversation.
 
-### `npm test`
+### Conversation History: 
+Users can revisit past conversations from a panel and view the feedback provided.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Prerequisites
+To run this application, you need to have the following installed on your machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Node.js
+npm (Node Package Manager) or yarn
+Installation
+Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+sh
+Copy code
+git clone https://github.com/your-username/ai-chat-feedback.git
+cd ai-chat-feedback
+Install the dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+sh
+Copy code
+npm install
+or
 
-### `npm run eject`
+sh
+Copy code
+yarn install
+Running the Application
+To start the application, run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+sh
+Copy code
+npm start
+or
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+sh
+Copy code
+yarn start
+This will launch the application in your default web browser.

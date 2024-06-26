@@ -33,7 +33,7 @@ Clone the repository:
 
 sh
 Copy code
-git clone https://github.com/ksuthar937/ai-chat-feedback.git
+git clone https://github.com/ksuthar937/ai-chat-bot.git
 cd ai-chat-feedback
 Install the dependencies:
 

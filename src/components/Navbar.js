@@ -8,6 +8,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Tabs from "./Tabs";
 import { Drawer } from "@mui/material";
 import { useNavigate } from "react-router";
+import SliderBtn from "./SliderBtn";
 
 const drawerWidth = 240;
 
@@ -37,7 +38,7 @@ const Navbar = (props) => {
         position="static"
         sx={{
           boxShadow: "none",
-          color: "var(--color-primary1)",
+          color: "var(--color-logo)",
           background: "inherit",
         }}
       >
@@ -68,6 +69,7 @@ const Navbar = (props) => {
           >
             Bot AI
           </Typography>
+          <SliderBtn />
         </Toolbar>
       </AppBar>
       <nav>

@@ -1,15 +1,29 @@
-:root {
-  /* Global variables to be defined here */
+[data-theme="light"] {
   --color-white: #ffffff;
   --color-black: #3c3c3c;
-
   --color-primary1: #9785ba;
   --color-primary2: #af9fcd;
   --color-primary3: #ffffff;
-
+  --color-primary4: #f9fafa;
+  --color-primary5: #ede4ff;
   --color-secondary1: #d7c7f4;
   --color-secondary2: #ffffff;
   --color-secondary3: #faf7ff;
+  --color-logo: #9785ba;
+}
+
+[data-theme="dark"] {
+  --color-white: #3c3c3c;
+  --color-black: #ffffff;
+  --color-primary1: #3c3c3c;
+  --color-primary2: #959595;
+  --color-primary3: #ffffff;
+  --color-primary4: #f9fafa;
+  --color-primary5: #e4e4e4;
+  --color-secondary1: rgb(173, 173, 173);
+  --color-secondary2: #ffffff;
+  --color-secondary3: #faf7ff;
+  --color-logo: #faf7ff;
 }
 
 *,
@@ -23,7 +37,11 @@
 html,
 body {
   height: 100%;
-  background: linear-gradient(180deg, #f9fafa 59%, #ede4ff 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-secondary1) 0%,
+    var(--color-secondary2) 100%
+  );
   color: var(--color-black);
   font-family: "Ubuntu", sans-serif;
 }
@@ -58,14 +76,4 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
-}
-
-@media screen and (min-width: 600px) {
-  body {
-    background: linear-gradient(
-      180deg,
-      rgba(215, 199, 244, 0.2) 0%,
-      rgba(151, 133, 186, 0.2) 100%
-    );
-  }
 }

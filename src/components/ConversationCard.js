@@ -47,6 +47,7 @@ const ConversationCard = ({ type, content, time, id, reaction, readOnly }) => {
             fontWeight: 700,
             textAlign: "left",
             fontFamily: "ubuntu",
+            color: "var(--color-black)",
           }}
         >
           {type === "question" ? "You" : "Soul AI"}
@@ -56,6 +57,7 @@ const ConversationCard = ({ type, content, time, id, reaction, readOnly }) => {
             fontSize: "16px",
             fontWeight: 400,
             textAlign: "left",
+            color: "var(--color-black)",
           }}
           component="div"
         >
@@ -75,6 +77,7 @@ const ConversationCard = ({ type, content, time, id, reaction, readOnly }) => {
               textAlign: "left",
               opacity: 0.6,
               mr: 1,
+              color: "var(--color-black)",
             }}
             component="div"
           >

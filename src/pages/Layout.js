@@ -11,7 +11,7 @@ const Layout = () => {
         sx={{
           display: { xs: "none", sm: "block" },
           width: "280px",
-          background: "white",
+          background: "var(--color-white)",
           position: "fixed",
           top: 0,
           left: 0,
@@ -35,7 +35,7 @@ const Layout = () => {
             left: { xs: 0, sm: "280px" },
             right: 0,
             zIndex: 1000,
-            backgroundColor: "white",
+            backgroundColor: "var(--color-white)",
           }}
         >
           <Navbar />
@@ -61,7 +61,7 @@ const Layout = () => {
             left: { xs: 0, sm: "280px" },
             right: 0,
             zIndex: 1000,
-            backgroundColor: "white",
+            backgroundColor: "var(--color-white)",
           }}
         >
           <FormInput />

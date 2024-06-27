@@ -40,6 +40,7 @@ const FeedbackModal = ({
           sx={{
             display: "flex",
             gap: 1,
+            color: "#000000",
           }}
         >
           <TipsAndUpdatesIcon />
@@ -61,7 +62,7 @@ const FeedbackModal = ({
           color="secondary"
           margin="normal"
           sx={{
-            background: "var(--color-white)",
+            background: "color: #ffffff",
           }}
           value={value}
           onChange={(e) => handleFeedback(e.target.value)}
@@ -72,7 +73,9 @@ const FeedbackModal = ({
             my: 2,
           }}
         >
-          <Typography>Rate conversation to improve!</Typography>
+          <Typography sx={{ color: "#000000" }}>
+            Rate conversation to improve!
+          </Typography>
           <StarRatings
             rating={rating}
             starRatedColor="var(--color-primary1)"

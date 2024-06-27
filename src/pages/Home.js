@@ -20,7 +20,7 @@ const Home = () => {
               marginLeft: 2,
               marginRight: { sm: 4, xs: 2 },
               my: 3,
-              background: "rgba(215, 199, 244, 0.13)",
+              background: "var(--color-primary1)",
               borderRadius: 4,
             }}
             key={item.id}
@@ -46,7 +46,7 @@ const Home = () => {
           wrapperStyle={{}}
           wrapperClass="comment-wrapper"
           color="#ffffff"
-          backgroundColor="#9785ba"
+          backgroundColor="var(--color-primary1)"
         />
       )}
     </>

@@ -74,7 +74,7 @@ const FormInput = () => {
       <TextField
         fullWidth
         sx={{
-          background: "var(--color-white)",
+          background: "#ffffff",
           borderRadius: "5px",
         }}
         size="small"

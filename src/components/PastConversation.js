@@ -18,7 +18,8 @@ const PastConversation = () => {
             marginLeft: 2,
             marginRight: { sm: 4, xs: 2 },
             my: 3,
-            background: "linear-gradient(90deg, #BFACE2 0%, #D7C7F4 100%)",
+            background:
+              "linear-gradient(90deg, var(--color-primary1) 0%, var(--color-primary2) 100%)",
             borderRadius: 4,
           }}
         >
@@ -48,11 +49,13 @@ const PastConversation = () => {
                 fontSize: "16px",
                 textAlign: "left",
                 p: 2,
+                color: "var(--color-black)",
               }}
             >
               <span
                 style={{
                   fontWeight: 700,
+                  color: "#000000",
                 }}
               >
                 Feedback:{" "}
